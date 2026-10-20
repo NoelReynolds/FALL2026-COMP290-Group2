@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent (typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
+    public bool isPossessed; // We can use this to check if player can complete level
     private new Rigidbody2D rigidbody;
     private SpriteRenderer sprite;
     [SerializeField] private Vector2 movementInput;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         ChangeState(PlayerState.Skeleton);
+        isPossessed = true;
     }
 
     void Update()
@@ -55,14 +57,17 @@ public class Player : MonoBehaviour
             case PlayerState.Skeleton:
                 rigidbody.gravityScale = 1;
                 rigidbody.excludeLayers = LayerMask.GetMask("SkeleIgnore");
+                isPossessed = true; // Set to false if this form can't beat the level
                 break;
             case PlayerState.Ghost:
                 rigidbody.gravityScale = 0;
                 rigidbody.excludeLayers = LayerMask.GetMask("GhostIgnore");
+                isPossessed = false;
                 break;
             case PlayerState.Human:
                 rigidbody.gravityScale = 1;
                 rigidbody.excludeLayers = LayerMask.NameToLayer("");
+                isPossessed = true;
                 break;
             default:
                 ChangeState(PlayerState.Skeleton);

@@ -16,16 +16,8 @@ public class LevelUI_Audio : MonoBehaviour
     //[SerializeField] private AudioClip endingBGM;
     //[SerializeField] private AudioClip gameOverBGM;
 
-    //// SFX Setup
-    //[SerializeField] private AudioClip possessSFX;
-    //[SerializeField] private AudioClip jumpSFX;
-    //[SerializeField] private AudioClip killSFX;
-    //[SerializeField] private AudioClip playerDeathSFX;
-    //[SerializeField] private AudioClip levelWinSFX;
-
     //// Audio Sources
     //[SerializeField] private AudioSource bgmSource;
-    //[SerializeField] private AudioSource sfxSource;
 
     // Level Soundtrack
     void Start()
@@ -111,31 +103,5 @@ public class LevelUI_Audio : MonoBehaviour
             StartCoroutine(DisableUI(uiUpTime));
         }
 
-    }
-
-    public void PossessSFX()
-    {
-        //sfxSource.clip = possessSFX;
-        //sfxSource.Play();
-    }
-    public void JumpSFX()
-    {
-        //sfxSource.clip = jumpSFX;
-        //sfxSource.Play();
-    }
-    public void KillSFX()
-    {
-        //sfxSource.clip = killSFX;
-        //sfxSource.Play();
-    }
-    public void DeathSFX()
-    {
-        //sfxSource.clip = playerDeathSFX;
-        //sfxSource.Play();
-    }
-    public void WinSFX()
-    {
-        //sfxSource.clip = levelWinSFX;
-        //sfxSource.Play();
     }
 }

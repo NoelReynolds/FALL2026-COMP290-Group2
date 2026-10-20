@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(AudioSource))]
 public class SkeletonController2D : MonoBehaviour
 {
     [Header("Movement")]
@@ -18,6 +20,28 @@ public class SkeletonController2D : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
+    [Header("Audio")]
+    [Tooltip("Sound played when the skeleton performs Attack 1.")]
+    [SerializeField] private AudioClip attack1Sound;
+
+    [Tooltip("Sound played when the skeleton performs Attack 2.")]
+    [SerializeField] private AudioClip attack2Sound;
+
+    [Tooltip("Sound played when the skeleton successfully jumps.")]
+    [SerializeField] private AudioClip jumpSound;
+
+    [Tooltip("Sound played when the skeleton takes non-fatal damage.")]
+    [SerializeField] private AudioClip takeDamageSound;
+
+    [Tooltip("Sound played when the skeleton dies.")]
+    [SerializeField] private AudioClip dieSound;
+
+    [Tooltip("Optional sound played when the skeleton first raises its shield.")]
+    [SerializeField] private AudioClip shieldSound;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float soundEffectVolume = 1f;
+
     [Header("Health")]
     [SerializeField] private int maxHealth = 100;
 
@@ -26,8 +50,21 @@ public class SkeletonController2D : MonoBehaviour
     [SerializeField] private int attack1Damage = 10;
     [SerializeField] private int attack2Damage = 20;
 
+    [Header("Attack Detection")]
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 0.85f;
+    [SerializeField] private float attackForwardOffset = 0.65f;
+    [SerializeField] private float attackVerticalOffset = 0.2f;
+    [SerializeField] private LayerMask enemyLayer;
+
+    [Header("Knockback")]
+    [SerializeField] private float knockbackForce = 5.5f;
+    [SerializeField] private float knockbackDuration = 0.25f;
+    [SerializeField] private float knockbackDeceleration = 16f;
+
     private Rigidbody2D rb;
     private Collider2D skeletonCollider;
+    private AudioSource audioSource;
 
     private float horizontalInput;
     private bool isGrounded;
@@ -39,9 +76,11 @@ public class SkeletonController2D : MonoBehaviour
     private float lastAttackTime;
     private float jumpGroundLockTimer;
 
+    private float knockbackVelocityX;
+    private float knockbackTimer;
+
     private const float JumpGroundLockDuration = 0.15f;
 
-    // Animator parameter hashes.
     private static readonly int SpeedHash =
         Animator.StringToHash("Speed");
 
@@ -78,32 +117,51 @@ public class SkeletonController2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         skeletonCollider = GetComponent<Collider2D>();
+        audioSource = GetComponent<AudioSource>();
 
         if (animator == null)
-        {
             animator = GetComponentInChildren<Animator>();
-        }
 
         if (spriteRenderer == null)
-        {
             spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        }
 
         currentHealth = maxHealth;
-
-        if (skeletonCollider == null)
-        {
-            Debug.LogError(
-                "Skeleton needs a Collider2D component!"
-            );
-        }
 
         if (rb.bodyType != RigidbodyType2D.Dynamic)
         {
             Debug.LogWarning(
-                "Skeleton Rigidbody2D should use Dynamic Body Type."
+                "Skeleton Rigidbody2D should use Dynamic Body Type.",
+                this
             );
         }
+
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+
+        // Audio clips will play only when requested by this script.
+        if (audioSource != null)
+        {
+            audioSource.playOnAwake = false;
+
+            // Use 2D audio so sound volume does not depend on
+            // the distance between the skeleton and the camera.
+            audioSource.spatialBlend = 0f;
+        }
+    }
+
+
+    // --------------------------------------------------
+    // AUDIO
+    // --------------------------------------------------
+
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource == null || clip == null)
+            return;
+
+        audioSource.PlayOneShot(
+            clip,
+            soundEffectVolume
+        );
     }
 
 
@@ -114,22 +172,16 @@ public class SkeletonController2D : MonoBehaviour
     private void Update()
     {
         if (isDead)
-        {
             return;
-        }
 
         if (jumpGroundLockTimer > 0f)
-        {
             jumpGroundLockTimer -= Time.deltaTime;
-        }
 
         CheckGrounded();
-
         HandleMovementInput();
         HandleJump();
         HandleCombatInput();
         HandleShield();
-
         UpdateAnimations();
     }
 
@@ -141,7 +193,30 @@ public class SkeletonController2D : MonoBehaviour
     private void FixedUpdate()
     {
         if (isDead)
+            return;
+
+        // Knockback takes priority over regular movement.
+        if (knockbackTimer > 0f)
         {
+            rb.linearVelocity = new Vector2(
+                knockbackVelocityX,
+                rb.linearVelocity.y
+            );
+
+            knockbackVelocityX = Mathf.MoveTowards(
+                knockbackVelocityX,
+                0f,
+                knockbackDeceleration * Time.fixedDeltaTime
+            );
+
+            knockbackTimer -= Time.fixedDeltaTime;
+
+            if (knockbackTimer <= 0f)
+            {
+                knockbackTimer = 0f;
+                knockbackVelocityX = 0f;
+            }
+
             return;
         }
 
@@ -160,13 +235,7 @@ public class SkeletonController2D : MonoBehaviour
 
     private void CheckGrounded()
     {
-        if (skeletonCollider == null)
-        {
-            isGrounded = false;
-            return;
-        }
-
-        if (jumpGroundLockTimer > 0f)
+        if (skeletonCollider == null || jumpGroundLockTimer > 0f)
         {
             isGrounded = false;
             return;
@@ -174,19 +243,16 @@ public class SkeletonController2D : MonoBehaviour
 
         Bounds bounds = skeletonCollider.bounds;
 
-        // Position the ground check immediately below the feet.
         Vector2 checkPosition = new Vector2(
             bounds.center.x,
             bounds.min.y - 0.02f
         );
 
-        // Make the check slightly narrower than the collider.
         Vector2 checkSize = new Vector2(
             Mathf.Max(0.05f, bounds.size.x * groundCheckWidth),
             groundCheckDistance
         );
 
-        // Detect colliders on the selected ground layer.
         Collider2D groundCollider = Physics2D.OverlapBox(
             checkPosition,
             checkSize,
@@ -206,34 +272,22 @@ public class SkeletonController2D : MonoBehaviour
     {
         horizontalInput = 0f;
 
-        // A = Move left.
         if (Input.GetKey(KeyCode.A))
-        {
             horizontalInput = -1f;
-        }
 
-        // D = Move right.
         if (Input.GetKey(KeyCode.D))
-        {
             horizontalInput = 1f;
-        }
 
-        // Either Shift key = Run.
         isRunning =
             Input.GetKey(KeyCode.LeftShift) ||
             Input.GetKey(KeyCode.RightShift);
 
-        // Flip the sprite to face the movement direction.
         if (spriteRenderer != null)
         {
             if (horizontalInput < 0f)
-            {
                 spriteRenderer.flipX = true;
-            }
             else if (horizontalInput > 0f)
-            {
                 spriteRenderer.flipX = false;
-            }
         }
     }
 
@@ -245,48 +299,32 @@ public class SkeletonController2D : MonoBehaviour
     private void HandleJump()
     {
         if (!Input.GetKeyDown(KeyCode.Space))
-        {
             return;
-        }
-
-        Debug.Log(
-            "Space pressed. Grounded: " + isGrounded
-        );
 
         if (!isGrounded)
         {
-            Debug.LogWarning(
-                "Jump blocked: skeleton is not grounded. " +
-                "Check the Ground Layer and ground detection rectangle."
-            );
-
+            Debug.Log("Jump blocked: skeleton is not grounded.");
             return;
         }
 
-        // Apply upward velocity immediately.
         rb.linearVelocity = new Vector2(
             rb.linearVelocity.x,
             jumpForce
         );
 
-        // Prevent immediate ground re-detection.
         isGrounded = false;
         jumpGroundLockTimer = JumpGroundLockDuration;
 
-        // Play the jump animation if the parameter exists.
         if (animator != null &&
             HasParameter(
-                animator,
                 "Jump",
                 AnimatorControllerParameterType.Trigger))
         {
             animator.SetTrigger(JumpHash);
         }
 
-        Debug.Log(
-            "JUMP SUCCESSFUL! Vertical velocity: " +
-            rb.linearVelocity.y
-        );
+        // Play only when the jump is successful.
+        PlaySound(jumpSound);
     }
 
 
@@ -296,75 +334,143 @@ public class SkeletonController2D : MonoBehaviour
 
     private void HandleCombatInput()
     {
-        // W = Attack 1.
         if (Input.GetKeyDown(KeyCode.W))
-        {
             Attack1();
-        }
 
-        // E = Attack 2.
         if (Input.GetKeyDown(KeyCode.E))
-        {
             Attack2();
-        }
     }
 
+
+    // --------------------------------------------------
+    // ATTACK 1
+    // --------------------------------------------------
 
     public void Attack1()
     {
         if (isDead || isShielding)
-        {
             return;
-        }
 
         if (Time.time < lastAttackTime + attackCooldown)
-        {
             return;
-        }
 
         lastAttackTime = Time.time;
 
         if (animator != null &&
             HasParameter(
-                animator,
                 "Attack1",
                 AnimatorControllerParameterType.Trigger))
         {
             animator.SetTrigger(Attack1Hash);
         }
 
-        Debug.Log(
-            "Skeleton used Attack 1! Damage: " + attack1Damage
-        );
+        // Play the attack sound when the attack is accepted,
+        // whether or not an enemy is within range.
+        PlaySound(attack1Sound);
+
+        Debug.Log("Skeleton Attack 1! Damage: " + attack1Damage);
+
+        DamageEnemiesInRange(attack1Damage);
     }
 
+
+    // --------------------------------------------------
+    // ATTACK 2
+    // --------------------------------------------------
 
     public void Attack2()
     {
         if (isDead || isShielding)
-        {
             return;
-        }
 
         if (Time.time < lastAttackTime + attackCooldown)
-        {
             return;
-        }
 
         lastAttackTime = Time.time;
 
         if (animator != null &&
             HasParameter(
-                animator,
                 "Attack2",
                 AnimatorControllerParameterType.Trigger))
         {
             animator.SetTrigger(Attack2Hash);
         }
 
-        Debug.Log(
-            "Skeleton used Attack 2! Damage: " + attack2Damage
+        // Play the attack sound when the attack is accepted.
+        PlaySound(attack2Sound);
+
+        Debug.Log("Skeleton Attack 2! Damage: " + attack2Damage);
+
+        DamageEnemiesInRange(attack2Damage);
+    }
+
+
+    // --------------------------------------------------
+    // ENEMY HIT DETECTION
+    // --------------------------------------------------
+
+    private void DamageEnemiesInRange(int damage)
+    {
+        Vector2 hitPosition = GetAttackPosition();
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            hitPosition,
+            attackRange,
+            enemyLayer
         );
+
+        if (hits.Length == 0)
+        {
+            Debug.Log(
+                "Attack missed. No enemies detected. " +
+                "Check Attack Point, Attack Range, and Enemy Layer."
+            );
+
+            return;
+        }
+
+        HashSet<EnemyController2D> damagedEnemies =
+            new HashSet<EnemyController2D>();
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit == null)
+                continue;
+
+            EnemyController2D enemy =
+                hit.GetComponentInParent<EnemyController2D>();
+
+            if (enemy == null || enemy.IsDead())
+                continue;
+
+            if (!damagedEnemies.Add(enemy))
+                continue;
+
+            enemy.TakeDamage(damage);
+
+            Debug.Log(
+                "Skeleton hit " + enemy.name +
+                " for " + damage + " damage."
+            );
+        }
+    }
+
+
+    private Vector2 GetAttackPosition()
+    {
+        if (attackPoint != null)
+            return attackPoint.position;
+
+        float facingDirection = 1f;
+
+        if (spriteRenderer != null && spriteRenderer.flipX)
+            facingDirection = -1f;
+
+        return (Vector2)transform.position +
+               new Vector2(
+                   facingDirection * attackForwardOffset,
+                   attackVerticalOffset
+               );
     }
 
 
@@ -374,16 +480,24 @@ public class SkeletonController2D : MonoBehaviour
 
     private void HandleShield()
     {
-        // Hold S to activate the shield.
+        // Remember the previous state so the sound plays once
+        // when the shield is raised, not every frame it is held.
+        bool wasShielding = isShielding;
+
         isShielding = Input.GetKey(KeyCode.S);
 
         if (animator != null &&
             HasParameter(
-                animator,
                 "IsShielding",
                 AnimatorControllerParameterType.Bool))
         {
             animator.SetBool(IsShieldingHash, isShielding);
+        }
+
+        // Play the optional shield sound only when shielding starts.
+        if (isShielding && !wasShielding)
+        {
+            PlaySound(shieldSound);
         }
     }
 
@@ -392,51 +506,118 @@ public class SkeletonController2D : MonoBehaviour
     // HEALTH AND DAMAGE
     // --------------------------------------------------
 
+    // Retains compatibility with existing calls that only
+    // provide damage and do not provide an attacker's position.
     public void TakeDamage(int damage)
     {
-        if (isDead || damage <= 0)
-        {
-            return;
-        }
+        float facingDirection = 1f;
 
+        if (spriteRenderer != null && spriteRenderer.flipX)
+            facingDirection = -1f;
+
+        Vector2 estimatedSourcePosition =
+            (Vector2)transform.position -
+            new Vector2(facingDirection, 0f);
+
+        TakeDamage(damage, estimatedSourcePosition);
+    }
+
+
+    // Called by an enemy that knows its own position.
+    public void TakeDamage(int damage, Vector2 sourcePosition)
+    {
+        if (isDead || damage <= 0)
+            return;
+
+        // Shielding blocks both damage and knockback.
         if (isShielding)
         {
             Debug.Log("Skeleton blocked the attack!");
             return;
         }
 
-        currentHealth = Mathf.Max(
-            0,
-            currentHealth - damage
-        );
+        currentHealth = Mathf.Max(0, currentHealth - damage);
 
         Debug.Log(
             "Skeleton took " + damage +
-            " damage. Health: " + currentHealth
+            " damage. Health: " + currentHealth +
+            "/" + maxHealth
         );
 
         if (animator != null &&
             HasParameter(
-                animator,
                 "TakeHit",
                 AnimatorControllerParameterType.Trigger))
         {
             animator.SetTrigger(TakeHitHash);
         }
 
+        ApplyKnockback(sourcePosition);
+
         if (currentHealth <= 0)
         {
+            // Die() plays the death sound for a fatal hit.
+            // This avoids playing the regular damage sound
+            // at the same time as the death sound.
             Die();
+        }
+        else
+        {
+            // Play the regular damage sound for non-fatal hits.
+            PlaySound(takeDamageSound);
         }
     }
 
 
+    private void ApplyKnockback(Vector2 sourcePosition)
+    {
+        if (rb == null || isDead)
+            return;
+
+        float difference =
+            transform.position.x - sourcePosition.x;
+
+        float direction;
+
+        if (Mathf.Abs(difference) > 0.01f)
+        {
+            // Push the skeleton away from the attacker.
+            direction = Mathf.Sign(difference);
+        }
+        else
+        {
+            // If both characters occupy nearly the same X
+            // position, use the skeleton's facing direction.
+            direction =
+                spriteRenderer != null && spriteRenderer.flipX
+                ? -1f
+                : 1f;
+        }
+
+        knockbackVelocityX = direction * knockbackForce;
+        knockbackTimer = knockbackDuration;
+
+        // Clear the old horizontal velocity.
+        rb.linearVelocity = new Vector2(
+            0f,
+            rb.linearVelocity.y
+        );
+
+        Debug.Log(
+            "Skeleton received knockback. Direction: " +
+            direction + ", force: " + knockbackVelocityX
+        );
+    }
+
+
+    // --------------------------------------------------
+    // HEALING
+    // --------------------------------------------------
+
     public void Heal(int amount)
     {
         if (isDead || amount <= 0)
-        {
             return;
-        }
 
         currentHealth = Mathf.Min(
             maxHealth,
@@ -444,7 +625,8 @@ public class SkeletonController2D : MonoBehaviour
         );
 
         Debug.Log(
-            "Skeleton healed. Health: " + currentHealth
+            "Skeleton healed. Health: " +
+            currentHealth + "/" + maxHealth
         );
     }
 
@@ -462,31 +644,44 @@ public class SkeletonController2D : MonoBehaviour
 
 
     // --------------------------------------------------
+    // DEATH STATUS
+    // --------------------------------------------------
+
+    public bool IsDead()
+    {
+        return isDead;
+    }
+
+
+    // --------------------------------------------------
     // DEATH
     // --------------------------------------------------
 
     public void Die()
     {
         if (isDead)
-        {
             return;
-        }
 
         isDead = true;
 
         horizontalInput = 0f;
         isShielding = false;
 
+        knockbackVelocityX = 0f;
+        knockbackTimer = 0f;
+
         rb.linearVelocity = Vector2.zero;
 
         if (animator != null &&
             HasParameter(
-                animator,
                 "Die",
                 AnimatorControllerParameterType.Trigger))
         {
             animator.SetTrigger(DieHash);
         }
+
+        // Play the death sound once.
+        PlaySound(dieSound);
 
         Debug.Log("Skeleton has died!");
     }
@@ -499,12 +694,9 @@ public class SkeletonController2D : MonoBehaviour
     private void UpdateAnimations()
     {
         if (animator == null)
-        {
             return;
-        }
 
         if (HasParameter(
-            animator,
             "Speed",
             AnimatorControllerParameterType.Float))
         {
@@ -512,32 +704,27 @@ public class SkeletonController2D : MonoBehaviour
                 Mathf.Abs(horizontalInput) *
                 (isRunning ? runSpeed : walkSpeed);
 
-            animator.SetFloat(
-                SpeedHash,
-                animationSpeed
-            );
+            // Reflect actual horizontal motion during knockback
+            // so the Speed parameter doesn't report normal
+            // walking while the character is being pushed.
+            if (knockbackTimer > 0f && rb != null)
+                animationSpeed = Mathf.Abs(rb.linearVelocity.x);
+
+            animator.SetFloat(SpeedHash, animationSpeed);
         }
 
         if (HasParameter(
-            animator,
             "IsGrounded",
             AnimatorControllerParameterType.Bool))
         {
-            animator.SetBool(
-                IsGroundedHash,
-                isGrounded
-            );
+            animator.SetBool(IsGroundedHash, isGrounded);
         }
 
         if (HasParameter(
-            animator,
             "IsRunning",
             AnimatorControllerParameterType.Bool))
         {
-            animator.SetBool(
-                IsRunningHash,
-                isRunning
-            );
+            animator.SetBool(IsRunningHash, isRunning);
         }
     }
 
@@ -547,13 +734,13 @@ public class SkeletonController2D : MonoBehaviour
     // --------------------------------------------------
 
     private bool HasParameter(
-        Animator targetAnimator,
         string parameterName,
         AnimatorControllerParameterType parameterType)
     {
-        foreach (
-            AnimatorControllerParameter parameter
-            in targetAnimator.parameters)
+        if (animator == null)
+            return false;
+
+        foreach (AnimatorControllerParameter parameter in animator.parameters)
         {
             if (parameter.name == parameterName &&
                 parameter.type == parameterType)
@@ -567,35 +754,34 @@ public class SkeletonController2D : MonoBehaviour
 
 
     // --------------------------------------------------
-    // VISUALIZE GROUND DETECTION
+    // GIZMOS
     // --------------------------------------------------
 
     private void OnDrawGizmosSelected()
     {
         Collider2D col = GetComponent<Collider2D>();
 
-        if (col == null)
+        if (col != null)
         {
-            return;
+            Bounds bounds = col.bounds;
+
+            Vector2 checkPosition = new Vector2(
+                bounds.center.x,
+                bounds.min.y - 0.02f
+            );
+
+            Vector2 checkSize = new Vector2(
+                Mathf.Max(0.05f, bounds.size.x * groundCheckWidth),
+                groundCheckDistance
+            );
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(checkPosition, checkSize);
         }
 
-        Bounds bounds = col.bounds;
+        Vector2 hitPosition = GetAttackPosition();
 
-        Vector2 checkPosition = new Vector2(
-            bounds.center.x,
-            bounds.min.y - 0.02f
-        );
-
-        Vector2 checkSize = new Vector2(
-            Mathf.Max(0.05f, bounds.size.x * groundCheckWidth),
-            groundCheckDistance
-        );
-
-        Gizmos.color = Color.yellow;
-
-        Gizmos.DrawWireCube(
-            checkPosition,
-            checkSize
-        );
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(hitPosition, attackRange);
     }
 }
