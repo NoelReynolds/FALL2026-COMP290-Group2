@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class EndGoalController : MonoBehaviour
 {
-    public Player player; // Use the player script to ensure player is possessing a body
+    public Simple_Test_Player player;
+    //public Player player; // Use the player script to ensure player is possessing a body
     [SerializeField] private GameObject getBodyUI;
     [SerializeField] private GameObject winUI;
     private float winTime = 10f;
