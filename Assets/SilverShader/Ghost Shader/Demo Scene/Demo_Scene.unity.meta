@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 99c9720ab356a0642a771bea13969a05
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 282923
+  packageName: Ghost Effect Shader
+  packageVersion: 1.0
+  assetPath: Assets/SilverShader/Ghost Shader/Demo Scene/Demo_Scene.unity
+  uploadId: 658673

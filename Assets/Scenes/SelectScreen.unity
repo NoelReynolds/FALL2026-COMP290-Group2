@@ -605,15 +605,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Having escaped that decrepit cemetery, you see a vast graveyard in your
-    way. The demonic forces of this world seem to have caught on to your return to
-    the land of the living. Do not let them stop you.
+  m_text: 'Having escaped that decrepit cemetery crypt, you see a vast graveyard
+    in your way. The demonic forces of this world seem to have caught on to your
+    return to the land of the living. Do not let them stop you.
 
 
-    That fire, that hunger.
-    Let it loose upon those who would stand in your way. If they pose too much of
-    a threat, then take what they value most: their own body. You need to keep that
-    body if you want to escape. You''re so close. Get. Out.'
+    That fire,
+    that hunger. Let it loose upon those who would stand in your way. If they pose
+    too much of a threat, then take what they value most: their own body. You need
+    to keep that body if you want to escape. You''re so close. Get. Out.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
