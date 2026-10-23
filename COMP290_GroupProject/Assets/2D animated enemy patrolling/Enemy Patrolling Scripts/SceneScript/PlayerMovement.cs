@@ -21,7 +21,7 @@ namespace EnemyPatrolling
             Vector2 movement = new Vector2(horizontal, vertical) * moveSpeed;
 
             // Apply movement to Rigidbody2D to ensure physics-based movement
-            rb.velocity = movement; // The Rigidbody2D controls position based on velocity
+            rb.linearVelocity = movement; // The Rigidbody2D controls position based on velocity
         }
     }
 }
