@@ -65,7 +65,7 @@ public class LevelUI_Audio : MonoBehaviour
             bgmSource.clip = titleBGM;
             bgmSource.Play();
         }
-        if (sceneName == "Cemetery Crypt Inside v12")
+        else if (sceneName == "Cemetery Crypt Inside v12")
         {
             bgmSource.clip = level1BGM;
             bgmSource.Play();
