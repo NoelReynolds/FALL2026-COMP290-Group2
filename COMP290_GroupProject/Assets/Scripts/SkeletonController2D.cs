@@ -6,6 +6,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class SkeletonController2D : MonoBehaviour
 {
+    public bool isPossessed = true;
+
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 4f;
     [SerializeField] private float runSpeed = 7f;
