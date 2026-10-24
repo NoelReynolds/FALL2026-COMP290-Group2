@@ -24,11 +24,11 @@ public class MenuController : MonoBehaviour
 
     public void Level1Click()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Cemetery Crypt Inside v12");
     }
 
     public void Level2Click()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("Cemetery Outside v13");
     }
 }

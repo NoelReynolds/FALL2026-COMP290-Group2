@@ -43231,9 +43231,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 65481184767809541, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 954057904653885931, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 962
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917319706045940980, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5545644516920554733, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
       propertyPath: m_Name
       value: Objectives_Tips
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849744417323571554, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 901
       objectReference: {fileID: 0}
     - target: {fileID: 8964802539597969354, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
       propertyPath: m_Pivot.x

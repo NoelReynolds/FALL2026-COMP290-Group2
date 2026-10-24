@@ -29,17 +29,17 @@ public class EndGoalController : MonoBehaviour
             if (player.isPossessed == true)
             {
                 // Edit these once scene names are agreed upon for each level
-                if (sceneName == "Cemetary")
+                if (sceneName == "Cemetery Crypt Inside v12")
                 {
                     winUI.SetActive(true); // Display the win screen before loading next level
                     StartCoroutine(WinScreen(winTime));
-                    SceneManager.LoadScene("Swamp");
+                    SceneManager.LoadScene("Cemetery Outside v13");
                 }
-                if (sceneName == "Swamp")
+                if (sceneName == "Cemetery Outside v13")
                 {
                     winUI.SetActive(true);
                     StartCoroutine(WinScreen(winTime));
-                    SceneManager.LoadScene("Church");
+                    SceneManager.LoadScene("EndScreen"); // We'll jump to the endscreen here for now
                 }
                 if (sceneName == "Church")
                 {

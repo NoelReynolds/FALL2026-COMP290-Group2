@@ -1492,9 +1492,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 65481184767809541, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 954057904653885931, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 961
+      objectReference: {fileID: 0}
+    - target: {fileID: 954057904653885931, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917319706045940980, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5545644516920554733, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
       propertyPath: m_Name
       value: Objectives_Tips
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849744417323571554, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 898
+      objectReference: {fileID: 0}
+    - target: {fileID: 5849744417323571554, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 8964802539597969354, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
       propertyPath: m_Pivot.x
@@ -1837,6 +1861,10 @@ PrefabInstance:
       propertyPath: bgmSource
       value: 
       objectReference: {fileID: 1752633093}
+    - target: {fileID: 8312518070402804640, guid: 10519db3c814f55429d2b3717e106bf3, type: 3}
+      propertyPath: objectiveText
+      value: 
+      objectReference: {fileID: 121136895}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

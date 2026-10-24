@@ -60,22 +60,22 @@ public class LevelUI_Audio : MonoBehaviour
     private void LoadLevel(string sceneName)
     {
         // This will load the Audio based on which scene is open
-        if (sceneName == "Title" || sceneName == "Opening")
+        if (sceneName == "Title" || sceneName == "SelectScreen")
         {
             bgmSource.clip = titleBGM;
             bgmSource.Play();
         }
-        else if (sceneName == "Cemetary")
+        if (sceneName == "Cemetery Crypt Inside v12")
         {
             bgmSource.clip = level1BGM;
             bgmSource.Play();
             objectiveText.SetActive(true);
             StartCoroutine(DisableUI(uiUpTime));
         }
-        else if (sceneName == "Swamp")
+        else if (sceneName == "Cemetery Outside v13")
         {
-            //bgmSource.clip = level2BGM;
-            //bgmSource.Play();
+            bgmSource.clip = level2BGM;
+            bgmSource.Play();
             objectiveText.SetActive(true);
             StartCoroutine(DisableUI(uiUpTime));
         }
