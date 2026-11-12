@@ -1880,6 +1880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149322134}
   - component: {fileID: 149322135}
+  - component: {fileID: 149322136}
   m_Layer: 0
   m_Name: Torch4
   m_TagString: Untagged
@@ -1961,6 +1962,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &149322136
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149322133}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &149895369
 GameObject:
   m_ObjectHideFlags: 0
@@ -33002,6 +33025,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299338347}
   - component: {fileID: 299338348}
+  - component: {fileID: 299338349}
   m_Layer: 0
   m_Name: Torch8 (7)
   m_TagString: Untagged
@@ -33083,6 +33107,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &299338349
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299338346}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &300172243
 GameObject:
   m_ObjectHideFlags: 0
@@ -36194,6 +36240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524648431}
   - component: {fileID: 524648432}
+  - component: {fileID: 524648433}
   m_Layer: 0
   m_Name: Torch6
   m_TagString: Untagged
@@ -36275,6 +36322,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &524648433
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524648430}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &527354060
 GameObject:
   m_ObjectHideFlags: 0
@@ -36831,6 +36900,7 @@ GameObject:
   m_Component:
   - component: {fileID: 557999177}
   - component: {fileID: 557999178}
+  - component: {fileID: 557999179}
   m_Layer: 0
   m_Name: Torch8
   m_TagString: Untagged
@@ -36912,6 +36982,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &557999179
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557999176}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &568319124
 GameObject:
   m_ObjectHideFlags: 0
@@ -37615,6 +37707,7 @@ GameObject:
   m_Component:
   - component: {fileID: 600949079}
   - component: {fileID: 600949080}
+  - component: {fileID: 600949081}
   m_Layer: 0
   m_Name: Torch8 (18)
   m_TagString: Untagged
@@ -37696,6 +37789,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &600949081
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600949078}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &611343112
 GameObject:
   m_ObjectHideFlags: 0
@@ -38308,6 +38423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 659904240}
   - component: {fileID: 659904241}
+  - component: {fileID: 659904242}
   m_Layer: 0
   m_Name: Torch8 (5)
   m_TagString: Untagged
@@ -38389,6 +38505,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &659904242
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659904239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &671009109
 GameObject:
   m_ObjectHideFlags: 0
@@ -38399,6 +38537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 671009110}
   - component: {fileID: 671009111}
+  - component: {fileID: 671009112}
   m_Layer: 0
   m_Name: Torch6 (1)
   m_TagString: Untagged
@@ -38480,6 +38619,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &671009112
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671009109}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &674491205
 GameObject:
   m_ObjectHideFlags: 0
@@ -38874,15 +39035,15 @@ MonoBehaviour:
   groundCheckWidth: 0.8
   animator: {fileID: 682749838}
   spriteRenderer: {fileID: 682749834}
-  attack1Sound: {fileID: 8300000, guid: 323e15cfe809e114ab92c9f4b25e8bc2, type: 3}
-  attack2Sound: {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
+  attack1Sound: {fileID: 8300000, guid: 88b1cbe3caa3fee4b8b103b5edd7aba9, type: 3}
+  attack2Sound: {fileID: 8300000, guid: cf2815de063a2f44996420f03ffb1c4b, type: 3}
   jumpSound: {fileID: 8300000, guid: 4e349dc959014a845b9aa317d1c2b7f0, type: 3}
   takeDamageSound: {fileID: 8300000, guid: acbcb75601b0082458fda8807f67c813, type: 3}
   dieSound: {fileID: 8300000, guid: 58b01150fef2fbc4793d8cce0ad31295, type: 3}
   shieldSound: {fileID: 8300000, guid: b7b5a6156961bac44a67504d42ce6fcf, type: 3}
   soundEffectVolume: 1
   maxHealth: 100
-  attackCooldown: 0.5
+  attackCooldown: 1
   attack1Damage: 10
   attack2Damage: 20
   attackPoint: {fileID: 0}
@@ -39217,6 +39378,7 @@ GameObject:
   m_Component:
   - component: {fileID: 687081767}
   - component: {fileID: 687081768}
+  - component: {fileID: 687081769}
   m_Layer: 0
   m_Name: Torch8 (9)
   m_TagString: Untagged
@@ -39298,6 +39460,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &687081769
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687081766}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &689221663
 GameObject:
   m_ObjectHideFlags: 0
@@ -39490,6 +39674,7 @@ GameObject:
   m_Component:
   - component: {fileID: 694925635}
   - component: {fileID: 694925636}
+  - component: {fileID: 694925637}
   m_Layer: 0
   m_Name: Torch8 (13)
   m_TagString: Untagged
@@ -39571,6 +39756,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &694925637
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694925634}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &709883152
 GameObject:
   m_ObjectHideFlags: 0
@@ -39854,6 +40061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 719781130}
   - component: {fileID: 719781131}
+  - component: {fileID: 719781132}
   m_Layer: 0
   m_Name: Torch8 (12)
   m_TagString: Untagged
@@ -39935,6 +40143,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &719781132
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719781129}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &732044805
 GameObject:
   m_ObjectHideFlags: 0
@@ -40342,7 +40572,7 @@ MonoBehaviour:
   isFlying: 1
   attackRange: 1
   verticalAttackTolerance: 1.3
-  attackCooldown: 5
+  attackCooldown: 3
   attack1Damage: 10
   attack2Damage: 20
   useSecondAttack: 0
@@ -40955,6 +41185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 834403212}
   - component: {fileID: 834403213}
+  - component: {fileID: 834403214}
   m_Layer: 0
   m_Name: Torch8 (16)
   m_TagString: Untagged
@@ -41036,6 +41267,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &834403214
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834403211}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &848073620
 GameObject:
   m_ObjectHideFlags: 0
@@ -42014,6 +42267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 904378245}
   - component: {fileID: 904378246}
+  - component: {fileID: 904378247}
   m_Layer: 0
   m_Name: Torch8 (8)
   m_TagString: Untagged
@@ -42095,6 +42349,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &904378247
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904378244}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &906503299
 GameObject:
   m_ObjectHideFlags: 0
@@ -42924,6 +43200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 976497344}
   - component: {fileID: 976497345}
+  - component: {fileID: 976497346}
   m_Layer: 0
   m_Name: Torch5
   m_TagString: Untagged
@@ -43005,6 +43282,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &976497346
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976497343}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &982169030
 GameObject:
   m_ObjectHideFlags: 0
@@ -43708,6 +44007,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1021022990}
   - component: {fileID: 1021022991}
+  - component: {fileID: 1021022992}
   m_Layer: 0
   m_Name: Torch7
   m_TagString: Untagged
@@ -43789,6 +44089,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1021022992
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021022989}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1024634022
 GameObject:
   m_ObjectHideFlags: 0
@@ -45830,6 +46152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194442851}
   - component: {fileID: 1194442852}
+  - component: {fileID: 1194442853}
   m_Layer: 0
   m_Name: Torch1
   m_TagString: Untagged
@@ -45911,6 +46234,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1194442853
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194442850}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1196479692
 GameObject:
   m_ObjectHideFlags: 0
@@ -45921,6 +46266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1196479693}
   - component: {fileID: 1196479694}
+  - component: {fileID: 1196479695}
   m_Layer: 0
   m_Name: Torch8 (17)
   m_TagString: Untagged
@@ -46002,6 +46348,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1196479695
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196479692}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1205648273
 GameObject:
   m_ObjectHideFlags: 0
@@ -46045,7 +46413,7 @@ MonoBehaviour:
   isFlying: 0
   attackRange: 1
   verticalAttackTolerance: 1.3
-  attackCooldown: 5
+  attackCooldown: 3
   attack1Damage: 10
   attack2Damage: 15
   useSecondAttack: 1
@@ -47057,6 +47425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270098981}
   - component: {fileID: 1270098982}
+  - component: {fileID: 1270098983}
   m_Layer: 0
   m_Name: Torch8 (3)
   m_TagString: Untagged
@@ -47138,6 +47507,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1270098983
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270098980}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1271010526
 GameObject:
   m_ObjectHideFlags: 0
@@ -47316,6 +47707,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1304500678}
   - component: {fileID: 1304500679}
+  - component: {fileID: 1304500680}
   m_Layer: 0
   m_Name: Torch6 (2)
   m_TagString: Untagged
@@ -47397,6 +47789,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1304500680
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304500677}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1310119538
 GameObject:
   m_ObjectHideFlags: 0
@@ -48243,7 +48657,7 @@ MonoBehaviour:
   isFlying: 0
   attackRange: 1.1
   verticalAttackTolerance: 1.3
-  attackCooldown: 5
+  attackCooldown: 3
   attack1Damage: 15
   attack2Damage: 20
   useSecondAttack: 1
@@ -48759,7 +49173,7 @@ MonoBehaviour:
   isFlying: 1
   attackRange: 1
   verticalAttackTolerance: 1.3
-  attackCooldown: 5
+  attackCooldown: 3
   attack1Damage: 10
   attack2Damage: 20
   useSecondAttack: 0
@@ -49687,6 +50101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1513080702}
   - component: {fileID: 1513080703}
+  - component: {fileID: 1513080704}
   m_Layer: 0
   m_Name: Torch8 (11)
   m_TagString: Untagged
@@ -49768,6 +50183,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1513080704
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513080701}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1525445979
 GameObject:
   m_ObjectHideFlags: 0
@@ -50115,6 +50552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1545669194}
   - component: {fileID: 1545669195}
+  - component: {fileID: 1545669196}
   m_Layer: 0
   m_Name: Torch8 (10)
   m_TagString: Untagged
@@ -50196,6 +50634,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1545669196
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545669193}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1548449926
 GameObject:
   m_ObjectHideFlags: 0
@@ -50206,6 +50666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1548449927}
   - component: {fileID: 1548449928}
+  - component: {fileID: 1548449929}
   m_Layer: 0
   m_Name: Torch2
   m_TagString: Untagged
@@ -50287,6 +50748,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1548449929
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548449926}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1562633540
 GameObject:
   m_ObjectHideFlags: 0
@@ -50763,10 +51246,10 @@ MonoBehaviour:
   isFlying: 0
   attackRange: 1
   verticalAttackTolerance: 1.3
-  attackCooldown: 5
+  attackCooldown: 3
   attack1Damage: 10
   attack2Damage: 15
-  useSecondAttack: 0
+  useSecondAttack: 1
   knockbackForce: 10
   knockbackDuration: 0.4
   knockbackDeceleration: 16
@@ -51327,6 +51810,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1652223909}
   - component: {fileID: 1652223910}
+  - component: {fileID: 1652223911}
   m_Layer: 0
   m_Name: Torch8 (4)
   m_TagString: Untagged
@@ -51408,6 +51892,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1652223911
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652223908}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1653094078
 GameObject:
   m_ObjectHideFlags: 0
@@ -52688,6 +53194,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7237500057051056403, guid: 991ce8fa1c16c3d4286519767a77e929, type: 3}
+      propertyPath: m_Volume
+      value: 0.34
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52708,6 +53218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1757790336}
   - component: {fileID: 1757790337}
+  - component: {fileID: 1757790338}
   m_Layer: 0
   m_Name: Torch3
   m_TagString: Untagged
@@ -52789,6 +53300,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1757790338
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757790335}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1763288048
 GameObject:
   m_ObjectHideFlags: 0
@@ -53913,6 +54446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1874671296}
   - component: {fileID: 1874671297}
+  - component: {fileID: 1874671298}
   m_Layer: 0
   m_Name: Torch8 (14)
   m_TagString: Untagged
@@ -53994,6 +54528,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1874671298
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874671295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1877188212
 GameObject:
   m_ObjectHideFlags: 0
@@ -54641,6 +55197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1964772547}
   - component: {fileID: 1964772548}
+  - component: {fileID: 1964772549}
   m_Layer: 0
   m_Name: Torch8 (2)
   m_TagString: Untagged
@@ -54722,6 +55279,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &1964772549
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964772546}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1967253776
 GameObject:
   m_ObjectHideFlags: 0
@@ -55438,6 +56017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2020855457}
   - component: {fileID: 2020855458}
+  - component: {fileID: 2020855459}
   m_Layer: 0
   m_Name: Torch8 (1)
   m_TagString: Untagged
@@ -55519,6 +56099,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &2020855459
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020855456}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2022209861
 GameObject:
   m_ObjectHideFlags: 0
@@ -55620,6 +56222,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2023073443}
   - component: {fileID: 2023073444}
+  - component: {fileID: 2023073445}
   m_Layer: 0
   m_Name: Torch8 (15)
   m_TagString: Untagged
@@ -55701,6 +56304,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!95 &2023073445
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023073442}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3c8703a698df83c42841ab78755d2182, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2024597145
 GameObject:
   m_ObjectHideFlags: 0
@@ -56017,7 +56642,7 @@ MonoBehaviour:
   isFlying: 1
   attackRange: 1
   verticalAttackTolerance: 1.3
-  attackCooldown: 5
+  attackCooldown: 3
   attack1Damage: 10
   attack2Damage: 20
   useSecondAttack: 0
