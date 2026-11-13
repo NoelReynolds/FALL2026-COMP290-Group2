@@ -1,3 +1,4 @@
 ﻿<Solution>
+  <Project Path="Alebardium.BloodlinesUI.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
 </Solution>

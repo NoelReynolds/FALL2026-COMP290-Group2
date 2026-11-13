@@ -39,9 +39,9 @@ public class EndGoalController : MonoBehaviour
                 {
                     winUI.SetActive(true);
                     StartCoroutine(WinScreen(winTime));
-                    SceneManager.LoadScene("EndScreen"); // We'll jump to the endscreen here for now
+                    SceneManager.LoadScene("Gothic Town v11");
                 }
-                if (sceneName == "Church")
+                if (sceneName == "Gothic Town v11")
                 {
                     winUI.SetActive(true);
                     StartCoroutine(WinScreen(winTime));

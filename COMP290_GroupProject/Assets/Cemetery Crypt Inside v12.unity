@@ -1493,8 +1493,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 65481184767809541, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e48d81020762c7946ac70f95631c3c78, type: 2}
+    - target: {fileID: 65481184767809541, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3403671416660078228, guid: e48d81020762c7946ac70f95631c3c78, type: 2}
+    - target: {fileID: 65481184767809541, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 65481184767809541, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 954057904653885931, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1505,8 +1517,24 @@ PrefabInstance:
       value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 2917319706045940980, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_text
+      value: "Reach the end of this crypt to escape your underground \nprison"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917319706045940980, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e48d81020762c7946ac70f95631c3c78, type: 2}
+    - target: {fileID: 2917319706045940980, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 3403671416660078228, guid: e48d81020762c7946ac70f95631c3c78, type: 2}
+    - target: {fileID: 2917319706045940980, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2917319706045940980, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5545644516920554733, guid: 8928303b96752ba4ab821ab8a64d80ae, type: 3}
       propertyPath: m_Name
@@ -33823,8 +33851,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -2273301884514820489, guid: 79807f6738808e147b74468fc4677eca, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -53539,7 +53567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 291, y: -95}
+  m_AnchoredPosition: {x: 329, y: -88}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1770186765
@@ -53651,7 +53679,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: de2a7e66419fb574d8202282964aa74d, type: 3}
     m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
