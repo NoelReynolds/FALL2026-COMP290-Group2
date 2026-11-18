@@ -54,4 +54,9 @@ public class MenuController : MonoBehaviour
     {
         SceneManager.LoadScene("Gothic Town v12");
     }
+
+    public void Level4Click()
+    {
+        SceneManager.LoadScene("Cemetery Church Inside v12");
+    }
 }

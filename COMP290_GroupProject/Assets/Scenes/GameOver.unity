@@ -793,6 +793,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1374839464}
     - target: {fileID: 8312518070402804640, guid: 10519db3c814f55429d2b3717e106bf3, type: 3}
+      propertyPath: level4BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 348c2a127e5120a469a37785098e6d24, type: 3}
+    - target: {fileID: 8312518070402804640, guid: 10519db3c814f55429d2b3717e106bf3, type: 3}
       propertyPath: objectiveText
       value: 
       objectReference: {fileID: 862162492}

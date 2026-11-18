@@ -1926,6 +1926,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1752633093}
     - target: {fileID: 8312518070402804640, guid: 10519db3c814f55429d2b3717e106bf3, type: 3}
+      propertyPath: level4BGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 348c2a127e5120a469a37785098e6d24, type: 3}
+    - target: {fileID: 8312518070402804640, guid: 10519db3c814f55429d2b3717e106bf3, type: 3}
       propertyPath: objectiveText
       value: 
       objectReference: {fileID: 121136895}
@@ -47823,9 +47827,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 682749835}
     - target: {fileID: 1743152523915549027, guid: 566b4372955d35e45a586cebeb1ce5ce, type: 3}
+      propertyPath: bestTime
+      value: 
+      objectReference: {fileID: 1976742466}
+    - target: {fileID: 1743152523915549027, guid: 566b4372955d35e45a586cebeb1ce5ce, type: 3}
       propertyPath: getBodyUI
       value: 
       objectReference: {fileID: 342353533}
+    - target: {fileID: 1743152523915549027, guid: 566b4372955d35e45a586cebeb1ce5ce, type: 3}
+      propertyPath: bestTimeText
+      value: 
+      objectReference: {fileID: 1976742466}
     - target: {fileID: 1743152523915549027, guid: 566b4372955d35e45a586cebeb1ce5ce, type: 3}
       propertyPath: levelTimerText
       value: 
@@ -55951,6 +55963,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3359392244082773421, guid: 2b9c4e930bbe36e4e969457ee9755161, type: 3}
   m_PrefabInstance: {fileID: 1976742464}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1976742466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8791762089576291813, guid: 2b9c4e930bbe36e4e969457ee9755161, type: 3}
+  m_PrefabInstance: {fileID: 1976742464}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1980735154
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,15 +11,20 @@ public class EndGoalController : MonoBehaviour
     [SerializeField] private GameObject getBodyUI;
     [SerializeField] private GameObject winUI;
     [SerializeField] private TMPro.TMP_Text levelTimerText;
-    private float time = 300f;
-    private float newTime;
-    private float winTime = 10f;
+    [SerializeField] private TMPro.TMP_Text bestTimeText;
+    private float bestTime;
+    public float timeLeft = 300f;
+    private int newTime;
+    private float winTime = 10.0f;
+    private bool levelBeat = false;
 
     private void Start()
     {
         getBodyUI.SetActive(false);
         winUI.SetActive(false);
     }
+
+
 
     // Scene Management on trigger with end goal
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,25 +36,39 @@ public class EndGoalController : MonoBehaviour
 
             if (player.isPossessed == true)
             {
-                Time.timeScale = 0;
+                levelBeat = true;
+
+                // Get the best time from memory
+                bestTime = PlayerPrefs.GetFloat($"{sceneName}_Score", 0.0f);
+
+                winUI.SetActive(true); // Display the win screen before loading next level
+                if(timeLeft > bestTime) // Check for a new score
+                {
+                    bestTimeText.text = $"NEW HIGH SCORE\n{timeLeft.ToString()}";
+                    // Save the new time to memory
+                    PlayerPrefs.SetFloat($"{sceneName}_Score", timeLeft);
+                }
+                else
+                {
+                    bestTimeText.text = timeLeft.ToString();
+                }
+
                 // Edit these once scene names are agreed upon for each level
                 if (sceneName == "Cemetery Crypt Inside v12")
                 {
-                    winUI.SetActive(true); // Display the win screen before loading next level
-                    StartCoroutine(WinScreen(winTime));
-                    SceneManager.LoadScene("Cemetery Outside v13");
+                    StartCoroutine(WinScreen(winTime, "Cemetery Outside v13"));
                 }
                 if (sceneName == "Cemetery Outside v13")
                 {
-                    winUI.SetActive(true);
-                    StartCoroutine(WinScreen(winTime));
-                    SceneManager.LoadScene("Gothic Town v12");
+                    StartCoroutine(WinScreen(winTime, "Gothic Town v12"));
                 }
                 if (sceneName == "Gothic Town v12")
                 {
-                    winUI.SetActive(true);
-                    StartCoroutine(WinScreen(winTime));
-                    SceneManager.LoadScene("EndScreen");
+                    StartCoroutine(WinScreen(winTime, "Cemetery Church Inside v12"));
+                }
+                if(sceneName == "Cemetery Church Inside v12")
+                {
+                    StartCoroutine(WinScreen(winTime, "EndScreen"));
                 }
             }
             else if(player.isPossessed == false)
@@ -70,21 +89,25 @@ public class EndGoalController : MonoBehaviour
         }
     }
 
-    private IEnumerator WinScreen(float time)
+    private IEnumerator WinScreen(float time, string sceneName)
     {
         yield return new WaitForSeconds(time);
 
         winUI.SetActive(false);
+        SceneManager.LoadScene(sceneName);
     }
 
     private void Update()
     {
-        time -= Time.deltaTime;
-        if(time <= 0)
+        if(levelBeat == false)
         {
-            SceneManager.LoadScene("GameOver");
+            timeLeft -= Time.deltaTime;
+            if (timeLeft <= 0)
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+            newTime = (int)timeLeft;
+            levelTimerText.text = newTime.ToString();
         }
-        newTime = (int)time;
-        levelTimerText.text = newTime.ToString();
     }
 }

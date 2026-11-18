@@ -13,6 +13,7 @@ public class LevelUI_Audio : MonoBehaviour
     [SerializeField] private AudioClip level1BGM;
     [SerializeField] private AudioClip level2BGM;
     [SerializeField] private AudioClip level3BGM;
+    [SerializeField] private AudioClip level4BGM;
     [SerializeField] private AudioClip endingBGM;
     [SerializeField] private AudioClip gameOverBGM;
 
@@ -82,6 +83,13 @@ public class LevelUI_Audio : MonoBehaviour
         else if (sceneName == "Gothic Town v12")
         {
             bgmSource.clip = level3BGM;
+            bgmSource.Play();
+            objectiveText.SetActive(true);
+            StartCoroutine(DisableUI(uiUpTime));
+        }
+        else if (sceneName == "Cemetery Church Inside v12")
+        {
+            bgmSource.clip = level4BGM;
             bgmSource.Play();
             objectiveText.SetActive(true);
             StartCoroutine(DisableUI(uiUpTime));
