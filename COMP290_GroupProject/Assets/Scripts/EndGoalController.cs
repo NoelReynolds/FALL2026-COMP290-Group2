@@ -15,7 +15,7 @@ public class EndGoalController : MonoBehaviour
     private float bestTime;
     public float timeLeft = 300f;
     private int newTime;
-    private float winTime = 10.0f;
+    private float winTime = 7.0f;
     private bool levelBeat = false;
 
     private void Start()

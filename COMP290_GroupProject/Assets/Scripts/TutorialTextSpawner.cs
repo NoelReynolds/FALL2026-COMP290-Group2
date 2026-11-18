@@ -13,14 +13,20 @@ public class TutorialTextSpawner : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            tutorialBox.SetActive(true);
+            if (tutorialBox != null)
+            {
+                tutorialBox.SetActive(true);
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            tutorialBox.SetActive(false);
+            if (tutorialBox != null)
+            {
+                tutorialBox.SetActive(false);
+            }
         }
     }
 }
