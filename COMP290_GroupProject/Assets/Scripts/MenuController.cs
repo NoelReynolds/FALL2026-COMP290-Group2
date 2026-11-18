@@ -1,8 +1,16 @@
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    [SerializeField] private GameObject optionsScreen;
+
+    private void Start()
+    {
+        optionsScreen.SetActive(false);
+    }
+
     public void OnStartClick()
     {
         SceneManager.LoadScene("SelectScreen");
@@ -22,6 +30,16 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
+    public void OnOpenOptions()
+    {
+        optionsScreen.SetActive(true);
+    }
+
+    public void OnCloseOptions()
+    {
+        optionsScreen.SetActive(false);
+    }
+
     public void Level1Click()
     {
         SceneManager.LoadScene("Cemetery Crypt Inside v12");
@@ -30,5 +48,10 @@ public class MenuController : MonoBehaviour
     public void Level2Click()
     {
         SceneManager.LoadScene("Cemetery Outside v13");
+    }
+
+    public void Level3Click()
+    {
+        SceneManager.LoadScene("Gothic Town v12");
     }
 }

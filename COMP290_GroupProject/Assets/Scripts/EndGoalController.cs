@@ -10,6 +10,9 @@ public class EndGoalController : MonoBehaviour
     public SkeletonController2D player; //We'll use this one for now
     [SerializeField] private GameObject getBodyUI;
     [SerializeField] private GameObject winUI;
+    [SerializeField] private TMPro.TMP_Text levelTimerText;
+    private float time = 300f;
+    private float newTime;
     private float winTime = 10f;
 
     private void Start()
@@ -28,6 +31,7 @@ public class EndGoalController : MonoBehaviour
 
             if (player.isPossessed == true)
             {
+                Time.timeScale = 0;
                 // Edit these once scene names are agreed upon for each level
                 if (sceneName == "Cemetery Crypt Inside v12")
                 {
@@ -39,9 +43,9 @@ public class EndGoalController : MonoBehaviour
                 {
                     winUI.SetActive(true);
                     StartCoroutine(WinScreen(winTime));
-                    SceneManager.LoadScene("Gothic Town v11");
+                    SceneManager.LoadScene("Gothic Town v12");
                 }
-                if (sceneName == "Gothic Town v11")
+                if (sceneName == "Gothic Town v12")
                 {
                     winUI.SetActive(true);
                     StartCoroutine(WinScreen(winTime));
@@ -71,5 +75,16 @@ public class EndGoalController : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         winUI.SetActive(false);
+    }
+
+    private void Update()
+    {
+        time -= Time.deltaTime;
+        if(time <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+        newTime = (int)time;
+        levelTimerText.text = newTime.ToString();
     }
 }

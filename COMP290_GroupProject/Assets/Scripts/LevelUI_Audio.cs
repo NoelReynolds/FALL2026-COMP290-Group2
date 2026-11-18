@@ -79,7 +79,7 @@ public class LevelUI_Audio : MonoBehaviour
             objectiveText.SetActive(true);
             StartCoroutine(DisableUI(uiUpTime));
         }
-        else if (sceneName == "Gothic Town v11")
+        else if (sceneName == "Gothic Town v12")
         {
             bgmSource.clip = level3BGM;
             bgmSource.Play();
