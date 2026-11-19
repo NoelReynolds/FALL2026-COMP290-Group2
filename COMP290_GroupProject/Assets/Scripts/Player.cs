@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         if (activeState == PlayerState.Ghost && (movementInput.x != 0 || movementInput.y != 0)) GhostMovement(movementInput);
         else if (activeState == PlayerState.Ghost && (movementInput.x == 0 || movementInput.y == 0)) rigidbody.linearVelocity = Vector2.zero;
         else if (activeState != PlayerState.Ghost && (movementInput.x != 0 || movementInput.y != 0)) SkeletonMovement(movementInput);
-        else if (activeState != PlayerState.Ghost && (movementInput.x == 0 || movementInput.y == 0)) /* Area for velocity resetting if needed, otherwise remove */;
+        //else if (activeState != PlayerState.Ghost && (movementInput.x == 0 || movementInput.y == 0)) /* Area for velocity resetting if needed, otherwise remove */;
     }
 
     public void ChangeState(PlayerState newState)

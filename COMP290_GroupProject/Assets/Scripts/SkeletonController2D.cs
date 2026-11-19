@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -7,6 +8,11 @@ using UnityEngine;
 public class SkeletonController2D : MonoBehaviour
 {
     public bool isPossessed = true;
+    private readonly float ghostTransformDelay = 1f;
+    private float ghostTransformTick = 0;
+    private float skelGravHolder;
+    private float verticalInput;
+    private float ghostMoveSpeed = 3f;
 
     [Header("Movement")]
     [SerializeField] private float walkSpeed = 4f;
@@ -110,7 +116,6 @@ public class SkeletonController2D : MonoBehaviour
     private static readonly int JumpHash =
         Animator.StringToHash("Jump");
 
-
     // --------------------------------------------------
     // INITIALIZATION
     // --------------------------------------------------
@@ -120,6 +125,8 @@ public class SkeletonController2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         skeletonCollider = GetComponent<Collider2D>();
         audioSource = GetComponent<AudioSource>();
+
+        skelGravHolder = rb.gravityScale;
 
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
@@ -150,7 +157,6 @@ public class SkeletonController2D : MonoBehaviour
         }
     }
 
-
     // --------------------------------------------------
     // AUDIO
     // --------------------------------------------------
@@ -165,7 +171,6 @@ public class SkeletonController2D : MonoBehaviour
             soundEffectVolume
         );
     }
-
 
     // --------------------------------------------------
     // UPDATE
@@ -187,7 +192,6 @@ public class SkeletonController2D : MonoBehaviour
         UpdateAnimations();
     }
 
-
     // --------------------------------------------------
     // PHYSICS UPDATE
     // --------------------------------------------------
@@ -197,6 +201,11 @@ public class SkeletonController2D : MonoBehaviour
         if (isDead)
             return;
 
+        if (ghostTransformTick > 0) ghostTransformTick -= Time.fixedDeltaTime;
+
+        if (!isPossessed && rb.gravityScale != 0) rb.gravityScale = 0;
+        else if (isPossessed) rb.gravityScale = skelGravHolder;
+        
         // Knockback takes priority over regular movement.
         if (knockbackTimer > 0f)
         {
@@ -228,8 +237,10 @@ public class SkeletonController2D : MonoBehaviour
             horizontalInput * currentSpeed,
             rb.linearVelocity.y
         );
-    }
 
+        if (!isPossessed) rb.linearVelocity = new Vector2(horizontalInput * currentSpeed, verticalInput * currentSpeed);
+        else if (!isPossessed && knockbackTimer <= 0 && (!Input.GetKey(KeyCode.W) || !Input.GetKey(KeyCode.S))) rb.linearVelocity = Vector2.zero;
+    }
 
     // --------------------------------------------------
     // GROUND DETECTION
@@ -237,6 +248,7 @@ public class SkeletonController2D : MonoBehaviour
 
     private void CheckGrounded()
     {
+        if (!isPossessed) return;
         if (skeletonCollider == null || jumpGroundLockTimer > 0f)
         {
             isGrounded = false;
@@ -265,7 +277,6 @@ public class SkeletonController2D : MonoBehaviour
         isGrounded = groundCollider != null;
     }
 
-
     // --------------------------------------------------
     // MOVEMENT
     // --------------------------------------------------
@@ -273,12 +284,26 @@ public class SkeletonController2D : MonoBehaviour
     private void HandleMovementInput()
     {
         horizontalInput = 0f;
+        verticalInput = 0f;
 
         if (Input.GetKey(KeyCode.A))
             horizontalInput = -1f;
 
         if (Input.GetKey(KeyCode.D))
             horizontalInput = 1f;
+
+        if (Input.GetKey(KeyCode.T) && GetAltarDetection() && ghostTransformTick <= 0)
+        {
+            if (!isPossessed || (isPossessed && isGrounded)) 
+            {
+                isPossessed = !isPossessed;
+                //Debug.Log("Toggled Ghost Form");
+                ghostTransformTick = ghostTransformDelay;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.W) && !isPossessed) verticalInput = 1f;
+        else if (Input.GetKey(KeyCode.S) && !isPossessed) verticalInput = -1f;
 
         isRunning =
             Input.GetKey(KeyCode.LeftShift) ||
@@ -293,6 +318,29 @@ public class SkeletonController2D : MonoBehaviour
         }
     }
 
+    // --------------------------------------------------
+    // ALTAR DETECTION
+    // --------------------------------------------------
+
+    private bool GetAltarDetection()
+    {
+        GameObject[] altarObjects = GameObject.FindGameObjectsWithTag("Shrine");
+        if (altarObjects.Length == 0) return false;
+
+        float dist2closestAltar = 6f;
+        for (int i = 0; i < altarObjects.Length; i++)
+        {
+            float _tempDist = (Mathf.Abs(altarObjects[i].gameObject.transform.position.x - gameObject.transform.position.x) +
+                Mathf.Abs(altarObjects[i].gameObject.transform.position.y - gameObject.transform.position.y));
+            if (_tempDist < dist2closestAltar)
+            {
+                dist2closestAltar = _tempDist;
+            }
+        }
+
+        if (dist2closestAltar <= 5.5f) return true;
+        else return false;
+    }
 
     // --------------------------------------------------
     // JUMPING
@@ -300,6 +348,7 @@ public class SkeletonController2D : MonoBehaviour
 
     private void HandleJump()
     {
+        if (!isPossessed) return;
         if (!Input.GetKeyDown(KeyCode.Space))
             return;
 
@@ -329,20 +378,18 @@ public class SkeletonController2D : MonoBehaviour
         PlaySound(jumpSound);
     }
 
-
     // --------------------------------------------------
     // COMBAT INPUT
     // --------------------------------------------------
 
     private void HandleCombatInput()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.R))
             Attack1();
 
         if (Input.GetKeyDown(KeyCode.E))
             Attack2();
     }
-
 
     // --------------------------------------------------
     // ATTACK 1
@@ -350,7 +397,7 @@ public class SkeletonController2D : MonoBehaviour
 
     public void Attack1()
     {
-        if (isDead || isShielding)
+        if (isDead || isShielding || !isPossessed)
             return;
 
         if (Time.time < lastAttackTime + attackCooldown)
@@ -375,14 +422,13 @@ public class SkeletonController2D : MonoBehaviour
         DamageEnemiesInRange(attack1Damage);
     }
 
-
     // --------------------------------------------------
     // ATTACK 2
     // --------------------------------------------------
 
     public void Attack2()
     {
-        if (isDead || isShielding)
+        if (isDead || isShielding || !isPossessed)
             return;
 
         if (Time.time < lastAttackTime + attackCooldown)
@@ -406,13 +452,14 @@ public class SkeletonController2D : MonoBehaviour
         DamageEnemiesInRange(attack2Damage);
     }
 
-
     // --------------------------------------------------
     // ENEMY HIT DETECTION
     // --------------------------------------------------
 
     private void DamageEnemiesInRange(int damage)
     {
+        if (!isPossessed) return;
+
         Vector2 hitPosition = GetAttackPosition();
 
         Collider2D[] hits = Physics2D.OverlapCircleAll(
@@ -457,7 +504,6 @@ public class SkeletonController2D : MonoBehaviour
         }
     }
 
-
     private Vector2 GetAttackPosition()
     {
         if (attackPoint != null)
@@ -475,18 +521,18 @@ public class SkeletonController2D : MonoBehaviour
                );
     }
 
-
     // --------------------------------------------------
     // SHIELD
     // --------------------------------------------------
 
     private void HandleShield()
     {
+        if (!isPossessed) return;
         // Remember the previous state so the sound plays once
         // when the shield is raised, not every frame it is held.
         bool wasShielding = isShielding;
 
-        isShielding = Input.GetKey(KeyCode.S);
+        isShielding = Input.GetKey(KeyCode.Q);
 
         if (animator != null &&
             HasParameter(
@@ -502,7 +548,6 @@ public class SkeletonController2D : MonoBehaviour
             PlaySound(shieldSound);
         }
     }
-
 
     // --------------------------------------------------
     // HEALTH AND DAMAGE
@@ -523,7 +568,6 @@ public class SkeletonController2D : MonoBehaviour
 
         TakeDamage(damage, estimatedSourcePosition);
     }
-
 
     // Called by an enemy that knows its own position.
     public void TakeDamage(int damage, Vector2 sourcePosition)
@@ -570,7 +614,6 @@ public class SkeletonController2D : MonoBehaviour
         }
     }
 
-
     private void ApplyKnockback(Vector2 sourcePosition)
     {
         if (rb == null || isDead)
@@ -611,7 +654,6 @@ public class SkeletonController2D : MonoBehaviour
         );
     }
 
-
     // --------------------------------------------------
     // HEALING
     // --------------------------------------------------
@@ -632,18 +674,15 @@ public class SkeletonController2D : MonoBehaviour
         );
     }
 
-
     public int GetCurrentHealth()
     {
         return currentHealth;
     }
 
-
     public int GetMaxHealth()
     {
         return maxHealth;
     }
-
 
     // --------------------------------------------------
     // DEATH STATUS
@@ -653,7 +692,6 @@ public class SkeletonController2D : MonoBehaviour
     {
         return isDead;
     }
-
 
     // --------------------------------------------------
     // DEATH
@@ -665,6 +703,8 @@ public class SkeletonController2D : MonoBehaviour
             return;
 
         isDead = true;
+
+        verticalInput = 0f;
 
         horizontalInput = 0f;
         isShielding = false;
@@ -688,7 +728,6 @@ public class SkeletonController2D : MonoBehaviour
         Debug.Log("Skeleton has died!");
     }
 
-
     // --------------------------------------------------
     // ANIMATIONS
     // --------------------------------------------------
@@ -698,7 +737,13 @@ public class SkeletonController2D : MonoBehaviour
         if (animator == null)
             return;
 
-        if (HasParameter(
+        if (!isPossessed)
+        {
+            animator.SetBool("IsGhost", true);
+        }
+        else animator.SetBool("IsGhost", false);
+
+            if (HasParameter(
             "Speed",
             AnimatorControllerParameterType.Float))
         {
@@ -730,7 +775,6 @@ public class SkeletonController2D : MonoBehaviour
         }
     }
 
-
     // --------------------------------------------------
     // ANIMATOR PARAMETER VALIDATION
     // --------------------------------------------------
@@ -753,7 +797,6 @@ public class SkeletonController2D : MonoBehaviour
 
         return false;
     }
-
 
     // --------------------------------------------------
     // GIZMOS
