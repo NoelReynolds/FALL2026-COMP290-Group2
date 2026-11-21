@@ -7,27 +7,28 @@ public class TypingController : MonoBehaviour
     [SerializeField] private float typingSpeed = 20f;
     [SerializeField] private TextMeshProUGUI textMesh;
     private Coroutine typingCoroutine;
-    [SerializeField] private TMP_Text textToType;
     private string tmpString;
-    [SerializeField] private GameObject tutorialBox;
 
-    private void StartTyping(TMP_Text textToType)
+
+    public void StartTyping(TMP_Text textToType)
     {
-        if(typingCoroutine != null)
+        if (typingCoroutine != null)
         {
+            Debug.Log($"In If Statement:\n{textToType.text}");
             StopCoroutine(typingCoroutine);
         }
-        tmpString = textToType.text.ToString();
+        tmpString = textToType.text;
         typingCoroutine = StartCoroutine(TypeTextRoutine(tmpString));
     }
 
-    private IEnumerator TypeTextRoutine(string textToType)
+    private IEnumerator TypeTextRoutine(string tmpString)
     {
-        textMesh.text = textToType;
+        textMesh.text = tmpString;
         textMesh.maxVisibleCharacters = 0;
 
         textMesh.ForceMeshUpdate();
         int totalVisibleCharacters = textMesh.textInfo.characterCount;
+        Debug.Log($"Number of visible characters: {totalVisibleCharacters.ToString()}");
 
         float delay = 1f / typingSpeed;
 
@@ -35,14 +36,6 @@ public class TypingController : MonoBehaviour
         {
             textMesh.maxVisibleCharacters = i;
             yield return new WaitForSeconds(delay);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            StartTyping(textToType);
         }
     }
 }

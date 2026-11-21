@@ -13,15 +13,31 @@ public class EndGoalController : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text levelTimerText;
     [SerializeField] private TMPro.TMP_Text bestTimeText;
     private float bestTime;
-    public float timeLeft = 300f;
+    private float timeLeft;
     private int newTime;
     private float winTime = 7.0f;
     private bool levelBeat = false;
+    private string openScene;
+
+    [SerializeField] private GameObject loseUI;
 
     private void Start()
     {
         getBodyUI.SetActive(false);
         winUI.SetActive(false);
+        loseUI.SetActive(false);
+
+        UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
+        string openScene = scene.name; // Checking which level is open
+
+        if(openScene == "Gothic Town v13" || openScene == "Cemetery Church Inside v13")
+        {
+            timeLeft = 500f; // Give more time to later levels
+        }
+        else
+        {
+            timeLeft = 300f;
+        }
     }
 
 
@@ -31,22 +47,19 @@ public class EndGoalController : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
-            string sceneName = scene.name; // Checking which level is open
-
             if (player.isPossessed == true)
             {
                 levelBeat = true;
 
                 // Get the best time from memory
-                bestTime = PlayerPrefs.GetFloat($"{sceneName}_Score", 0.0f);
+                bestTime = PlayerPrefs.GetFloat($"{openScene}_Score", 0.0f);
 
                 winUI.SetActive(true); // Display the win screen before loading next level
                 if(timeLeft > bestTime) // Check for a new score
                 {
                     bestTimeText.text = $"NEW HIGH SCORE\n{timeLeft.ToString()}";
                     // Save the new time to memory
-                    PlayerPrefs.SetFloat($"{sceneName}_Score", timeLeft);
+                    PlayerPrefs.SetFloat($"{openScene}_Score", timeLeft);
                 }
                 else
                 {
@@ -54,19 +67,19 @@ public class EndGoalController : MonoBehaviour
                 }
 
                 // Edit these once scene names are agreed upon for each level
-                if (sceneName == "Cemetery Crypt Inside v12")
+                if (openScene == "Cemetery Crypt Inside v13")
                 {
-                    StartCoroutine(WinScreen(winTime, "Cemetery Outside v13"));
+                    StartCoroutine(WinScreen(winTime, "Cemetery Outside v14"));
                 }
-                if (sceneName == "Cemetery Outside v13")
+                if (openScene == "Cemetery Outside v14")
                 {
-                    StartCoroutine(WinScreen(winTime, "Gothic Town v12"));
+                    StartCoroutine(WinScreen(winTime, "Gothic Town v13"));
                 }
-                if (sceneName == "Gothic Town v12")
+                if (openScene == "Gothic Town v13")
                 {
-                    StartCoroutine(WinScreen(winTime, "Cemetery Church Inside v12"));
+                    StartCoroutine(WinScreen(winTime, "Cemetery Church Inside v13"));
                 }
-                if(sceneName == "Cemetery Church Inside v12")
+                if(openScene == "Cemetery Church Inside v13")
                 {
                     StartCoroutine(WinScreen(winTime, "EndScreen"));
                 }
@@ -97,6 +110,14 @@ public class EndGoalController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    private IEnumerator LoseScreen(float time, string sceneName)
+    {
+        yield return new WaitForSeconds(time);
+
+        loseUI.SetActive(false);
+        SceneManager.LoadScene(sceneName);
+    }
+
     private void Update()
     {
         if(levelBeat == false)
@@ -104,7 +125,8 @@ public class EndGoalController : MonoBehaviour
             timeLeft -= Time.deltaTime;
             if (timeLeft <= 0)
             {
-                SceneManager.LoadScene("GameOver");
+                loseUI.SetActive(true);
+                StartCoroutine(LoseScreen(winTime, "GameOver"));
             }
             newTime = (int)timeLeft;
             levelTimerText.text = newTime.ToString();

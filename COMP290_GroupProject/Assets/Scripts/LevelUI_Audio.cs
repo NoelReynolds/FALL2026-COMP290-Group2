@@ -49,7 +49,7 @@ public class LevelUI_Audio : MonoBehaviour
     {
         if(tipsText.activeInHierarchy)
         {
-            if(Input.GetKeyDown(KeyCode.T)) // Remove the Tip and view the objective again
+            if(Input.GetKeyDown(KeyCode.O)) // Remove the Tip and view the objective again
             {
                 tipsText.SetActive(false);
                 objectiveText.SetActive(true);
@@ -66,28 +66,28 @@ public class LevelUI_Audio : MonoBehaviour
             bgmSource.clip = titleBGM;
             bgmSource.Play();
         }
-        else if (sceneName == "Cemetery Crypt Inside v12")
+        else if (sceneName == "Cemetery Crypt Inside v13")
         {
             bgmSource.clip = level1BGM;
             bgmSource.Play();
             objectiveText.SetActive(true);
             StartCoroutine(DisableUI(uiUpTime));
         }
-        else if (sceneName == "Cemetery Outside v13")
+        else if (sceneName == "Cemetery Outside v14")
         {
             bgmSource.clip = level2BGM;
             bgmSource.Play();
             objectiveText.SetActive(true);
             StartCoroutine(DisableUI(uiUpTime));
         }
-        else if (sceneName == "Gothic Town v12")
+        else if (sceneName == "Gothic Town v13")
         {
             bgmSource.clip = level3BGM;
             bgmSource.Play();
             objectiveText.SetActive(true);
             StartCoroutine(DisableUI(uiUpTime));
         }
-        else if (sceneName == "Cemetery Church Inside v12")
+        else if (sceneName == "Cemetery Church Inside v13")
         {
             bgmSource.clip = level4BGM;
             bgmSource.Play();

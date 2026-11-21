@@ -42,21 +42,21 @@ public class MenuController : MonoBehaviour
 
     public void Level1Click()
     {
-        SceneManager.LoadScene("Cemetery Crypt Inside v12");
+        SceneManager.LoadScene("Cemetery Crypt Inside v13");
     }
 
     public void Level2Click()
     {
-        SceneManager.LoadScene("Cemetery Outside v13");
+        SceneManager.LoadScene("Cemetery Outside v14");
     }
 
     public void Level3Click()
     {
-        SceneManager.LoadScene("Gothic Town v12");
+        SceneManager.LoadScene("Gothic Town v13");
     }
 
     public void Level4Click()
     {
-        SceneManager.LoadScene("Cemetery Church Inside v12");
+        SceneManager.LoadScene("Cemetery Church Inside v13");
     }
 }

@@ -1,12 +1,16 @@
+using TMPro;
 using UnityEngine;
 
 public class TutorialTextSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject tutorialBox;
+    private TypingController typeText;
+    [SerializeField] private TMP_Text textToType;
 
     private void Start()
     {
         tutorialBox.SetActive(false);
+        typeText = GetComponent<TypingController>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -16,6 +20,7 @@ public class TutorialTextSpawner : MonoBehaviour
             if (tutorialBox != null)
             {
                 tutorialBox.SetActive(true);
+                typeText.StartTyping(textToType);
             }
         }
     }

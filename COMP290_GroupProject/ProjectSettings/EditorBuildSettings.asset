@@ -12,17 +12,17 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectScreen.unity
     guid: 2a7209cdc5e316d4b904cdfc51d571ec
   - enabled: 1
-    path: Assets/Cemetery Crypt Inside v12.unity
-    guid: cc4b265ac1cc46a478bb3c816e13bedc
+    path: Assets/Cemetery Crypt Inside v13.unity
+    guid: a53ed15125cacdd4795214cc224e41c1
   - enabled: 1
-    path: Assets/Cemetery Outside v13.unity
-    guid: ce5a0989aa4e2af4ba59f07f938d8773
+    path: Assets/Cemetery Outside v14.unity
+    guid: 784c6d78ecfe0054b88f8e63a9ab8baa
   - enabled: 1
-    path: Assets/Gothic Town v12.unity
-    guid: c5976086da7e2084493278b584b43558
+    path: Assets/Gothic Town v13.unity
+    guid: 2bac50fd136fab541ab48a0b6c59fd6b
   - enabled: 1
-    path: Assets/Cemetery Church Inside v12.unity
-    guid: 6a53c6beaa882af4cbe83aee71673be8
+    path: Assets/Cemetery Church Inside v13.unity
+    guid: e938751c9b2635f4784b38be7c2ad8a4
   - enabled: 1
     path: Assets/Scenes/EndScreen.unity
     guid: 86d965d4d0d3cdf46ba3df69169e85ca
